@@ -1,0 +1,35 @@
+# -*- coding: utf-8 -*-
+"""
+-------------------------------------------------
+   File Name：     config
+   Description :
+   Author :       Oscar
+   date：          2022/11/29
+-------------------------------------------------
+"""
+__author__ = 'Oscar'
+
+import configparser
+import os
+
+
+class Config:
+    def __init__(self):
+        BASE_PATH = os.path.split(os.path.dirname(os.path.abspath(__file__)))[0]
+        CONFIG_FILE = os.path.join(BASE_PATH, 'data', 'config.ini')
+        self.config = configparser.ConfigParser()
+        self.config.read(CONFIG_FILE)
+
+    def get(self, section, key):
+        conf = self.config.get(section, key)
+        return conf
+
+    def path(self):
+        BASE_PATH = os.path.split(os.path.dirname(os.path.abspath(__file__)))[0]
+        return BASE_PATH
+
+
+if __name__ == '__main__':
+    c = Config()
+    print(c.path())
+    print(c.get('browserType', 'browserName'))
