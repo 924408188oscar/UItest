@@ -18,6 +18,6 @@ if __name__ == '__main__':
     # browser.get("http://www.zhihu.com/explore")
     # browser.execute_script('window.scrollTo(0, document.body.scrollHeight)')
     # browser.execute_script('alert("To Bottom")')
-    pytest.main()
+    pytest.main(['-vs', './test/testcase/test_baidu.py'])   #指定文件运行
 
 # 访问 https://www.jetbrains.com/help/pycharm/ 获取 PyCharm 帮助
