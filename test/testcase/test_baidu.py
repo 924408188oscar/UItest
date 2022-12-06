@@ -1,8 +1,11 @@
 from time import sleep
 
+import allure
 from selenium import webdriver
 
+
 from test.common.BrowserDriver import BrowserDriver
+from test.common.screenshot_about_case import screenshot_about_case
 from test.page.BaiduPage import BaiduPage
 from utils.logger import Logger
 import pytest
@@ -18,6 +21,8 @@ class TestBaidu:
         self.driver = BrowserDriver().openbrowser()
         # self.driver.get("https://www.baidu.com")
 
+    @screenshot_about_case
+    @allure.title("验证页面title")
     def test_baidu_search_case(self):
         page = BaiduPage(self.driver)
         print(type(page))
