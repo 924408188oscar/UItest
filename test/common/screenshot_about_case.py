@@ -4,6 +4,8 @@ import inspect
 from datetime import datetime
 from functools import wraps
 
+import allure
+
 """
 此模块用于屏幕截图  
 https://www.cnblogs.com/jhhh/p/16763981.html
@@ -55,6 +57,8 @@ def screenshot_about_case(func):
             screen_img = screenshotPath + '_' + time_now + '_' + screen_shot_name
             # 截图并保存到相应的名称的路径
             self.driver.get_screenshot_as_file(screen_img)
+            # 截图添加到失败的case的 allure的报告里
+            allure.attach.file(screen_img, attachment_type=allure.attachment_type.PNG)
             raise e
 
     return get_screenshot_about_case
